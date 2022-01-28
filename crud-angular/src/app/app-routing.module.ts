@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path:'', pathMatch: 'full', redirectTo: 'courses' },
+  { path:'', pathMatch: 'full', redirectTo: 'filmes' },
   {
-    path: 'courses',
-    loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)
+    path: 'filmes',
+    loadChildren: () => import('./filmes/filmes.module').then(m => m.FilmesModule)
   }
 ];
 
