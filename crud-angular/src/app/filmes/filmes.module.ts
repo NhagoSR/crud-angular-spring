@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
+import { SharedModule } from './../shared/shared.module';
 import { FilmesRoutingModule } from './filmes-routing.module';
 import { FilmesComponent } from './filmes/filmes.component';
 
@@ -13,7 +14,8 @@ import { FilmesComponent } from './filmes/filmes.component';
   imports: [
     CommonModule,
     FilmesRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
 export class FilmesModule { }
