@@ -15,7 +15,7 @@ export class FilmesComponent implements OnInit {
 
   filmes$: Observable<Filme[]>;
   // filmes: Filme[] = [];
-  displayedColumns = ['name','category'];
+  displayedColumns = ['titulo','categoria'];
 
   // FilmesService: FilmesService;
 
