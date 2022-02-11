@@ -1,23 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, first, tap } from 'rxjs/operators';
+import { first, tap } from 'rxjs/operators';
 
-import { Filme } from '../model/filme';
+import { Filmes } from '../model/filmes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmesService {
 
-  private readonly API = '/api/filmes';
+  private readonly API = 'api/filmes';
 
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Filme[]>(this.API)
+    return this.httpClient.get<Filmes[]>(this.API)
     .pipe(
       first(),
-      delay(5000),
       tap(filmes => console.log(filmes))
     );
   }

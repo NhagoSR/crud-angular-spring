@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
 
-import { Filme } from '../model/filme';
+import { Filmes } from '../model/filmes';
 import { FilmesService } from '../services/filmes.service';
 
 @Component({
@@ -13,9 +13,9 @@ import { FilmesService } from '../services/filmes.service';
 })
 export class FilmesComponent implements OnInit {
 
-  filmes$: Observable<Filme[]>;
-  // filmes: Filme[] = [];
-  displayedColumns = ['titulo','categoria'];
+  filmes$: Observable<Filmes[]>;
+  // filmes: Filmes[] = [];
+  displayedColumns = ['_id','titulo','sinopse','dataLancamento','nomeDiretor','categoria','estudio'];
 
   // FilmesService: FilmesService;
 

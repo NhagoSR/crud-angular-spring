@@ -1,26 +1,61 @@
+
 <mat-card>
   <mat-toolbar color="primary">
-    <span>FIlmes disponíveis</span>
+    <span>Filmes disponíveis</span>
   </mat-toolbar>
 
   <div *ngIf="filmes$ | async as filmes; else loading">
     <table mat-table [dataSource]="filmes" class="mat-elevation-z8">
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Filme</th>
-        <td mat-cell *matCellDef="let filme">{{ filme.titulo }}</td>
+
+      <!-- Coluna de id -->
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef>_id</th>
+        <td mat-cell *matCellDef="let filmes">{{ filmes?._id }}</td>
       </ng-container>
 
-      <!-- Category Column -->
-      <ng-container matColumnDef="category">
+      <!-- Coluna de titulo -->
+      <ng-container matColumnDef="titulo">
+        <th mat-header-cell *matHeaderCellDef>Filmes</th>
+        <td mat-cell *matCellDef="let filmes">{{ filmes?.titulo }}</td>
+      </ng-container>
+
+      <!-- Coluna de sinopse -->
+      <ng-container matColumnDef="sinopse">
+        <th mat-header-cell *matHeaderCellDef>Sinopse</th>
+        <td mat-cell *matCellDef="let filmes">{{ filmes?.sinopse }}</td>
+      </ng-container>
+
+      <!-- Coluna de Data Lançamento -->
+      <ng-container matColumnDef="dataLancamento">
+        <th mat-header-cell *matHeaderCellDef>Data de Lançamento</th>
+        <td mat-cell *matCellDef="let filmes">{{ filmes?.dataLancamento }}</td>
+      </ng-container>
+
+      <!-- Coluna de nome diretor -->
+      <ng-container matColumnDef="nomeDiretor">
+        <th mat-header-cell *matHeaderCellDef>Nome Diretor</th>
+        <td mat-cell *matCellDef="let filmes">{{ filmes?.nomeDiretor }}</td>
+      </ng-container>
+
+
+      <!-- Coluna de categoria -->
+      <ng-container matColumnDef="categoria">
         <th mat-header-cell *matHeaderCellDef>Categoria</th>
-        <td mat-cell *matCellDef="let filme">{{ filme.categoria }}</td>
+        <td mat-cell *matCellDef="let filmes">{{ filmes?.categoria?.nome }}</td>
+      </ng-container>
+
+      <!-- Coluna de estudio -->
+      <ng-container matColumnDef="estudio">
+        <th mat-header-cell *matHeaderCellDef>Estudio</th>
+        <td mat-cell *matCellDef="let filmes">{{ filmes?.estudio?.nome }}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-</div>
+
+  </div>
+
 
   <ng-template #loading>
     <div class="loading-spinner">
@@ -28,3 +63,4 @@
     </div>
   </ng-template>
 </mat-card>
+
