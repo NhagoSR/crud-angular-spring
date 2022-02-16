@@ -1,0 +1,32 @@
+<mat-card>
+  <form>
+    <mat-form-field class="form-full-width" appearance="fill">
+      <mat-label>Título do Filme</mat-label>
+      <input matInput placeholder="Título do filme aqui">
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width" appearance="fill">
+      <mat-label>Nome do diretor</mat-label>
+      <input matInput placeholder="Nome do diretor aqui">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Data de Lançamento</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width" appearance="fill">
+      <mat-label>Sinopse</mat-label>
+      <textarea matInput placeholder="Sinopse aqui"></textarea>
+    </mat-form-field>
+
+
+  </form>
+  <mat-dialog-actions align="center">
+    <button mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial (click)="abrirSwalAdicionarFilme()">Salvar</button>
+    <button mat-button mat-dialog-close>Cancelar</button>
+  </mat-dialog-actions>
+
+</mat-card>

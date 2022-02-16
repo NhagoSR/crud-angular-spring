@@ -1,7 +1,9 @@
+import { AdcFilmesComponent } from '../../shared/components/adc-filmes/adc-filmes.component';
 import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, matDialogAnimations } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
+import { UpdFilmesComponent } from 'src/app/shared/components/upd-filmes/upd-filmes.component';
 
 import { Filmes } from '../model/filmes';
 import { FilmesService } from '../services/filmes.service';
@@ -14,17 +16,13 @@ import { FilmesService } from '../services/filmes.service';
 export class FilmesComponent implements OnInit {
 
   filmes$: Observable<Filmes[]>;
-  // filmes: Filmes[] = [];
-  displayedColumns = ['_id','titulo','sinopse','dataLancamento','nomeDiretor','categoria','estudio'];
+  displayedColumns = ['_id','titulo','sinopse','dataLancamento','nomeDiretor','categoria','estudio','acoes'];
 
-  // FilmesService: FilmesService;
 
   constructor(
     private FilmesService: FilmesService,
     public dialog: MatDialog
   ) {
-    // this.filmes = [];
-    // this.filmesService = new FilmesService();
     this.filmes$ = this.FilmesService.list()
     .pipe(
       catchError(error => {
@@ -32,7 +30,14 @@ export class FilmesComponent implements OnInit {
         return of([])
       })
     );
-    // this.FilmesService.list().subscribe(filmes => this.filmes = filmes);
+  }
+
+  onOpenAdcFilmes(){
+    this.dialog.open(AdcFilmesComponent);
+  }
+
+  onOpenUpdFilmes(){
+    this.dialog.open(UpdFilmesComponent);
   }
 
   onError(errorMsg: string) {
