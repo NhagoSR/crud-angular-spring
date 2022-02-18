@@ -1,32 +1,68 @@
+<mat-toolbar color="primary">
+  <span>Cadastre um filme</span>
+</mat-toolbar>
+
 <mat-card>
-  <form>
-    <mat-form-field class="form-full-width" appearance="fill">
+  <form #AddFilmeForm="ngForm" (ngSubmit)="onSubmitFilmeAddForm(AddFilmeForm.value)">
+    <mat-form-field class="form-full-width" appearance="outline">
       <mat-label>Título do Filme</mat-label>
-      <input matInput placeholder="Título do filme aqui">
+      <ng-container >
+        <input name="titulo" ngModel matInput placeholder="Título do filme aqui">
+      </ng-container>
     </mat-form-field>
 
-    <mat-form-field class="form-full-width" appearance="fill">
+    <mat-form-field class="form-full-width" appearance="outline">
       <mat-label>Nome do diretor</mat-label>
-      <input matInput placeholder="Nome do diretor aqui">
+      <input name="nomeDiretor" ngModel matInput placeholder="Nome do diretor aqui">
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Data de Lançamento</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
 
-    <mat-form-field class="form-full-width" appearance="fill">
+    <section class="d-flex justify-content-around">
+      <div>
+        <ng-container>
+          <mat-form-field class="px-1" appearance="outline">
+            <mat-label>Data de Lançamento</mat-label>
+              <input name="dataLancamento" ngModel matInput [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </ng-container>
+      </div>
+      <div>
+        <mat-form-field class="px-1" appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select ngModel ngDefaultControl name="idCategoria" placeholder="Selecione uma categoria">
+              <ng-container *ngFor="let categoria of filmeCategorias$ | async">
+                  <mat-option [value]="categoria?.id">{{categoria?.nome}}</mat-option>
+              </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="px-1" appearance="outline">
+          <mat-label>Estudio</mat-label>
+          <mat-select name="idEstudio" ngModel ngDefaultControl placeholder="Selecione um estudio">
+              <ng-container *ngFor="let estudio of filmeEstudios$ | async">
+                  <mat-option [value]="estudio?.id">{{estudio?.nome}}</mat-option>
+              </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </section>
+
+    <mat-form-field class="form-full-width" appearance="outline">
       <mat-label>Sinopse</mat-label>
-      <textarea matInput placeholder="Sinopse aqui"></textarea>
+      <ng-container >
+        <textarea name="sinopse" ngModel matInput placeholder="Sinopse aqui"></textarea>
+      </ng-container>
     </mat-form-field>
 
+    <mat-dialog-actions align="center">
+      <button type="submit" mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial (click)="abrirSwalAdicionarFilme()">Salvar</button>
+      <button mat-button mat-dialog-close>Cancelar</button>
+    </mat-dialog-actions>
 
   </form>
-  <mat-dialog-actions align="center">
-    <button mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial (click)="abrirSwalAdicionarFilme()">Salvar</button>
-    <button mat-button mat-dialog-close>Cancelar</button>
-  </mat-dialog-actions>
 
 </mat-card>

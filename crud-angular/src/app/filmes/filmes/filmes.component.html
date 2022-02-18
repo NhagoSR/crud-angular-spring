@@ -4,7 +4,7 @@
     <span>Filmes disponíveis</span>
     <span class="example-spacer"></span>
     <button mat-mini-fab color="accent" (click)="onOpenAdcFilmes()">
-      <p class="fs-4">+</p>
+      <mat-icon>add</mat-icon>
     </button>
 
   </mat-toolbar>
@@ -59,10 +59,10 @@
       <ng-container matColumnDef="acoes">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let filmes">
-          <button class="m-1" mat-mini-fab color="accent" (click)="onOpenUpdFilmes()">
+          <button class="mx-1" mat-mini-fab color="accent" (click)="onOpenUpdFilmes()">
             <mat-icon>build</mat-icon>
           </button>
-          <button mat-mini-fab color="warn">
+          <button class="mx-1"mat-mini-fab color="warn" (click)="onDltFilmes(filmes?._id)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
