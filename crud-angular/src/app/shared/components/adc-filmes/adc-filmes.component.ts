@@ -5,6 +5,8 @@ import { FilmesService } from './../../../filmes/services/filmes.service';
 import { Observable, tap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-adc-filmes',
@@ -21,25 +23,21 @@ export class AdcFilmesComponent implements OnInit {
   filmesPost$: any;
 
   constructor(
-    private filmes: FilmesService
+    private filmesService: FilmesService,
+    public dialog: MatDialog
     ) {
 
-      this.filmes$ = this.filmes.list().
+      this.filmes$ = this.filmesService.list().
       pipe(
       tap(filmes$ => console.log(filmes$))
     );
 
-      this.filmeCategorias$ = this.filmes.listCategoria().
+      this.filmeCategorias$ = this.filmesService.listCategoria().
       pipe(
       tap(filmeCategorias$ => console.log(filmeCategorias$))
     );
 
-      this.filmeEstudios$ = this.filmes.listEstudio().
-      pipe(
-      tap(filmeEstudios$ => console.log(filmeEstudios$))
-    );
-
-      this.filmeEstudios$ = this.filmes.listEstudio().
+      this.filmeEstudios$ = this.filmesService.listEstudio().
       pipe(
       tap(filmeEstudios$ => console.log(filmeEstudios$))
     );
@@ -50,9 +48,14 @@ export class AdcFilmesComponent implements OnInit {
 
   }
 
+  public closeAllDialogs(){
+    console.log(this.dialog);
+    this.dialog.closeAll();
+  }
+
   onSubmitFilmeAddForm(data:any){
-    this.filmeCategorias$ = this.filmes.listCategoria(),
-    this.filmeEstudios$ = this.filmes.listEstudio()
+    this.filmeCategorias$ = this.filmesService.listCategoria(),
+    this.filmeEstudios$ = this.filmesService.listEstudio()
     Swal.fire({
       title: 'Você quer salvar o filme?',
       showDenyButton: true,
@@ -64,35 +67,13 @@ export class AdcFilmesComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.filmesPost$ = this.filmes.postFilme(data)
+        this.filmesPost$ = this.filmesService.postFilme(data)
 
         console.warn(data)
 
-        Swal.fire('Salvo!', '', 'success').then(function(){
-          location.reload();
-          }
-       );
+        Swal.fire('Salvo!', '', 'success');
+        this.closeAllDialogs()
 
-
-      } else if (result.isDenied) {
-        Swal.fire('O filme não foi salvo', '', 'info')
-      }
-    })
-  }
-
-  abrirSwalAdicionarFilme(){
-    Swal.fire({
-      title: 'Você quer salvar o filme?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Salvar',
-      denyButtonText: `Não salvar`,
-      confirmButtonColor: '$mat-teal',
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-
-        Swal.fire('Salvo!', '', 'success')
 
 
       } else if (result.isDenied) {
@@ -100,5 +81,13 @@ export class AdcFilmesComponent implements OnInit {
       }
     })
   }
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
+    });
+  }
+
+
 
 }

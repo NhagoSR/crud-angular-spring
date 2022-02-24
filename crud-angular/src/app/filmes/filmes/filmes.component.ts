@@ -6,6 +6,7 @@ import { UpdFilmesComponent } from 'src/app/shared/components/upd-filmes/upd-fil
 import { AdcFilmesComponent } from '../../shared/components/adc-filmes/adc-filmes.component';
 import { FilmesService } from '../services/filmes.service';
 import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
+import {MatSortModule} from '@angular/material/sort';
 import { Categorias } from './../model/categorias';
 import Swal from 'sweetalert2';
 
@@ -47,12 +48,21 @@ export class FilmesComponent implements OnInit {
   }
 
   onOpenAdcFilmes(){
-    this.dialog.open(AdcFilmesComponent);
+    this.dialog.open(AdcFilmesComponent).afterClosed().subscribe(
+      success => this.onRefresh(),
+      error => this.onError(error)
+    )
   }
 
 
-  onOpenUpdFilmes(){
-    this.dialog.open(UpdFilmesComponent);
+  onOpenUpdFilmes(_id:number){
+    this.dialog.open(UpdFilmesComponent, {
+      data: _id
+    }).afterClosed().subscribe(
+      success => this.onRefresh(),
+      error => this.onError(error)
+    );
+
   }
 
   onError(errorMsg: string) {

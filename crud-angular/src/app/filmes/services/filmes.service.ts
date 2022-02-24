@@ -2,7 +2,7 @@ import { Filmes } from './../model/filmes';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { first, tap } from 'rxjs/operators';
+import { first, take, tap } from 'rxjs/operators';
 import { Categorias } from '../model/categorias';
 import { Estudios } from '../model/estudios';
 
@@ -46,7 +46,16 @@ export class FilmesService {
   }
 
   deleteFilme(_id: number){
-    return this.httpClient.delete<Filmes>(`${this.API}/filmes/${_id}`)
+    return this.httpClient.delete<Filmes>(`${this.API}/filmes/${_id}`).pipe(take(1));
+  }
+
+  listCurrent(_id: number){
+    return this.httpClient.get<Filmes>(`${this.API}/filmes/${_id}`).pipe(take(1));
+  }
+
+  updateFilme(_id: number, data:any){
+    return this.httpClient.put<Filmes[]>(`${this.API}/filmes/${_id}`, data).subscribe((result)=>{
+      console.warn("result", result)});
   }
 
 
