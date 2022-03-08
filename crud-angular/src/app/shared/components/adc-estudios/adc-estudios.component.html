@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <span>Cadastre um estudio</span>
+</mat-toolbar>
+
+<mat-card>
+  <form #AddEstudioForm="ngForm" (ngSubmit)="onSubmitEstudioAddForm(AddEstudioForm.value)">
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Nome do Estudio</mat-label>
+      <ng-container >
+        <input name="nome" ngModel matInput placeholder="Nome do estudio aqui">
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <ng-container >
+        <textarea name="descricao" ngModel matInput placeholder="Descrição aqui"></textarea>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-dialog-actions align="center">
+      <button type="submit" mat-flat-button color="primary" cdkFocusInitial>Salvar</button>
+      <button mat-button mat-dialog-close>Cancelar</button>
+    </mat-dialog-actions>
+
+  </form>
+
+</mat-card>

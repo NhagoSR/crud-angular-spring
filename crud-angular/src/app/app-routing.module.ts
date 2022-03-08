@@ -5,7 +5,17 @@ const routes: Routes = [
   { path:'', pathMatch: 'full', redirectTo: 'filmes' },
   {
     path: 'filmes',
-    loadChildren: () => import('./filmes/filmes.module').then(m => m.FilmesModule)
+    loadChildren: () => import('./filmes/filmes/filmes.module').then(m => m.FilmesModule)
+  },
+
+  {
+    path: 'estudios',
+    loadChildren: () => import('./filmes/estudios/estudios.module').then(m => m.EstudiosModule)
+  },
+
+  {
+    path: 'categorias',
+    loadChildren: () => import('./filmes/categorias/categorias.module').then(m => m.CategoriasModule)
   }
 ];
 

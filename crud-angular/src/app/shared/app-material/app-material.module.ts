@@ -13,7 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   exports: [
@@ -30,8 +30,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatOptionModule,
-    FormsModule
-
+    FormsModule,
+    MatMenuModule
 
   ],
   providers: [

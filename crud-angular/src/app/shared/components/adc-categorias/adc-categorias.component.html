@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span>Cadastre um categoria</span>
+</mat-toolbar>
+
+<mat-card>
+  <form #AddCategoriaForm="ngForm" (ngSubmit)="onSubmitCategoriaAddForm(AddCategoriaForm.value)">
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Nome do Categoria</mat-label>
+      <ng-container >
+        <input name="nome" ngModel matInput placeholder="Nome do categoria aqui">
+      </ng-container>
+    </mat-form-field>
+
+    <mat-dialog-actions align="center">
+      <button type="submit" mat-flat-button color="primary" cdkFocusInitial>Salvar</button>
+      <button mat-button mat-dialog-close>Cancelar</button>
+    </mat-dialog-actions>
+
+  </form>
+
+</mat-card>

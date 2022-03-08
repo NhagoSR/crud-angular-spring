@@ -1,3 +1,5 @@
+import { AppMaterialModule } from './shared/app-material/app-material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,7 +20,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     MatToolbarModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    SharedModule,
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,13 @@
 import { Filmes } from './../model/filmes';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { catchError, empty, Observable, of } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { UpdFilmesComponent } from 'src/app/shared/components/upd-filmes/upd-filmes.component';
 import { AdcFilmesComponent } from '../../shared/components/adc-filmes/adc-filmes.component';
 import { FilmesService } from '../services/filmes.service';
 import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
-import {MatSortModule} from '@angular/material/sort';
-import { Categorias } from './../model/categorias';
 import Swal from 'sweetalert2';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-filmes',
@@ -31,7 +29,7 @@ export class FilmesComponent implements OnInit {
     this.filmes$ = this.FilmesService.list()
     .pipe(
       catchError(error => {
-        this.onError('Erro ao carregar cursos.')
+        this.onError('Erro ao carregar filmes.')
         return of([])
       })
     );
@@ -41,7 +39,7 @@ export class FilmesComponent implements OnInit {
     this.filmes$ = this.FilmesService.list().pipe(
       catchError(error =>{
         console.error(error);
-        this.onError('Erro ao carregar cursos.')
+        this.onError('Erro ao carregar filmes.')
         return of([])
       })
     )

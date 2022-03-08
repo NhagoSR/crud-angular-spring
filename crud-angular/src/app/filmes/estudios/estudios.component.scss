@@ -14,41 +14,20 @@
   flex: 1 1 auto;
 }
 
-.mat-column-_id {
+.mat-column-id {
   width: 32px;
   border-right: 1px solid black;
   padding-right: 24px;
   text-align: center;
 }
 
-.mat-column-titulo {
+.mat-column-nome {
   padding-left: 16px;
   font-size: 18px;
 }
 
-.mat-column-sinopse {
+.mat-column-descricao {
   padding-left: 5px;
-  font-style: italic;
-}
-
-.mat-column-dataLancamento {
-  padding-left: 5px;
-  font-style: italic;
-}
-
-.mat-column-nomeDiretor {
-  padding-left: 5px;
-  font-style: italic;
-}
-
-.mat-column-categoria {
-  padding-left: 5px;
-  font-style: italic;
-}
-
-.mat-column-estudio {
-  padding-left: 5px;
-  padding-right: 5px;
   font-style: italic;
 }
 

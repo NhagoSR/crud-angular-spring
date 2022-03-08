@@ -1,0 +1,64 @@
+
+<mat-card>
+  <mat-toolbar color="primary">
+    <a class="ms-1" mat-flat-button routerLink="/estudios" color="accent">Estudios</a>
+    <a class="mx-1" mat-flat-button routerLink="/filmes">Filmes</a>
+    <a class="me-1" mat-flat-button routerLink="/categorias">Categorias</a>
+    <span class="spacer"></span>
+    <button mat-mini-fab color="accent" (click)="onOpenAdcEstudios()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+  <div matSort class="mat-elevation-z8" *ngIf="estudios$ | async as estudios; else loading">
+    <table mat-table [dataSource]="estudios" matSort class="mat-elevation-z8 mat-table-main">
+
+      <!-- Coluna de id -->
+
+      <ng-container class="ngContain" matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
+        <td mat-cell *matCellDef="let estudios">{{ estudios?.id }}</td>
+      </ng-container>
+
+      <!-- Coluna de nome -->
+      <ng-container class="ngContain" matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="estudios">Estudios</th>
+        <td mat-cell *matCellDef="let estudios">{{ estudios?.nome }}</td>
+      </ng-container>
+
+      <!-- Coluna de descricao -->
+      <ng-container class="ngContain" matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="estudios">Descrição</th>
+        <td mat-cell *matCellDef="let estudios">{{ estudios?.descricao }}</td>
+      </ng-container>
+
+      <!-- Coluna de Ações-->
+      <ng-container class="ngContain d-flex justify-content-center" matColumnDef="acoes" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let estudios">
+          <button class="" mat-mini-fab color="accent" (click)="onOpenUpdEstudios(estudios?.id)">
+            <mat-icon>build</mat-icon>
+          </button>
+          <button class="mx-1"mat-mini-fab color="warn" (click)="onDltEstudios(estudios?.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+
+  </div>
+
+
+  <ng-template #loading>
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+
+</mat-card>
+
