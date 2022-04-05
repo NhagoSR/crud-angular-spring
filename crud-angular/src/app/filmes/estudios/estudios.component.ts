@@ -85,11 +85,11 @@ export class EstudiosComponent implements OnInit {
           .subscribe(
             success => this.onRefresh(),
             error => (this.onError(error),
-                      Swal.fire(
-                        'Erro!',
-                        'O estudio não foi deletado. <br>Provavelmente há algum filme com esse estudio',
-                        'error'
-                      ))
+              Swal.fire(
+                'Erro!',
+                'O estudio não foi deletado. <br>Provavelmente há algum filme com esse estudio',
+                'error'
+              ))
           );
 
           Swal.fire(

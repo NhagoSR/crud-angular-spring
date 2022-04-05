@@ -67,7 +67,8 @@ export class UpdCategoriasComponent implements OnInit {
 
 
       } else if (result.isDenied) {
-        Swal.fire('As alterações foram salvas', '', 'info')
+        Swal.fire('As alterações foram salvas', '', 'info');
+        this.closeAllDialogs()
       }
     })
   }

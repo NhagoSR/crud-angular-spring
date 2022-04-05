@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-upd-estudios',
   templateUrl: './upd-estudios.component.html',
@@ -67,7 +68,8 @@ export class UpdEstudiosComponent implements OnInit {
 
 
       } else if (result.isDenied) {
-        Swal.fire('As alterações foram salvas', '', 'info')
+        Swal.fire('As alterações foram salvas', '', 'info');
+        this.closeAllDialogs()
       }
     })
   }

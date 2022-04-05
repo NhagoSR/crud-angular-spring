@@ -77,7 +77,8 @@ export class AdcFilmesComponent implements OnInit {
 
 
       } else if (result.isDenied) {
-        Swal.fire('O filme não foi salvo', '', 'info')
+        Swal.fire('O filme não foi salvo', '', 'info');
+        this.closeAllDialogs()
       }
     })
   }

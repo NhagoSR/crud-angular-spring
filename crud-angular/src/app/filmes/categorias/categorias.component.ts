@@ -85,11 +85,11 @@ export class CategoriasComponent implements OnInit {
           .subscribe(
             success => this.onRefresh(),
             error => (this.onError(error),
-                      Swal.fire(
-                        'Erro!',
-                        'O categoria não foi deletada. <br>Provavelmente há algum filme com essa categoria',
-                        'error'
-                      ))
+              Swal.fire(
+                'Erro!',
+                'O categoria não foi deletada. <br>Provavelmente há algum filme com essa categoria',
+                'error'
+              ))
           );
 
           Swal.fire(

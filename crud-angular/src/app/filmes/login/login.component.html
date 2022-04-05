@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <span>Insira os dados do usuario</span>
+</mat-toolbar>
+
+<mat-card>
+  <form #LoginForm="ngForm" (ngSubmit)="onSubmitLoginForm()">
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <ng-container >
+        <input [(ngModel)]="requestLogin.email" name="email" matInput placeholder="Email aqui">
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Senha</mat-label>
+      <ng-container >
+        <input [(ngModel)]="requestLogin.senha" name="nome" type="password" matInput placeholder="Senha aqui">
+      </ng-container>
+    </mat-form-field>
+
+    <button type="submit" mat-flat-button color="primary" cdkFocusInitial>Entrar</button>
+
+
+  </form>
+
+</mat-card>

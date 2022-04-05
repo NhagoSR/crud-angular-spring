@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-  <span>Crud Angular + Spring</span>
+  <button routerLink="/home">home</button>
   <span class="spacer"></span>
-  <button class="menuButton"mat-flat-button [matMenuTriggerFor]="loginMenu">Entrar / Registrar-se</button>
+  <button color="accent" mat-flat-button [matMenuTriggerFor]="loginMenu" class="menuButton">Entrar / Registrar-se</button>
 <mat-menu #loginMenu="matMenu">
-  <button mat-menu-item>Entrar</button>
+  <button mat-menu-item routerLink="/login">Entrar</button>
   <button mat-menu-item>Registrar-se</button>
 </mat-menu>
 </mat-toolbar>

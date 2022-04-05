@@ -12,9 +12,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
-
 @NgModule({
   exports: [
     MatCardModule,
@@ -31,6 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSelectModule,
     MatOptionModule,
     FormsModule,
+    ReactiveFormsModule,
     MatMenuModule
 
   ],
