@@ -30,7 +30,15 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./filmes/login/login.module').then(m => m.LoginModule)
+  },
+
+  {
+    path: 'logout',
+
+    loadChildren: () => import('./filmes/logout/logout.module').then(m => m.LogoutModule),
+
   }
+
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ import Swal, {SweetAlertIcon} from 'sweetalert2';
 })
 export class MySwalService {
 
-constructor() { }
+constructor() {let timerInterval}
 
 public success(message: string, title: string): void{
   this.showAlert(title, message, 'success');

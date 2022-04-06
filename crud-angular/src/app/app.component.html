@@ -1,10 +1,17 @@
 <mat-toolbar color="primary">
-  <button routerLink="/home">home</button>
+  <button class="homeBtn" mat-fab color="accent" routerLink="/home" aria-label="Example icon-button with a heart icon">
+    <mat-icon size="10">home</mat-icon>
+  </button>
+
+  <span class="sepBar" *ngIf="authService.isAuthenticated()">|</span>
+
+  <button class="crudBtn" color="accent" mat-flat-button *ngIf="authService.isAuthenticated()" routerLink="/filmes">Acessar CRUD</button>
+
   <span class="spacer"></span>
-  <button color="accent" mat-flat-button [matMenuTriggerFor]="loginMenu" class="menuButton">Entrar / Registrar-se</button>
-<mat-menu #loginMenu="matMenu">
-  <button mat-menu-item routerLink="/login">Entrar</button>
-  <button mat-menu-item>Registrar-se</button>
-</mat-menu>
+
+  <button color="accent" mat-flat-button class="menuButton" routerLink="/logout" *ngIf="authService.isAuthenticated()">Sair</button>
+
+  <button color="accent" mat-flat-button routerLink="/login" class="menuButton" *ngIf="!authService.isAuthenticated()">Entrar / Registrar-se</button>
+
 </mat-toolbar>
 <router-outlet></router-outlet>

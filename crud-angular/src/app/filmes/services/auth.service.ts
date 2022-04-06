@@ -13,10 +13,7 @@ export class AuthService {
   }
 
   public isAuthenticated():boolean{
-    return Boolean(this.loginResponse?.token);
+    return Boolean(this.loginResponse?.token && this.loginResponse?.tipo);
   }
-
-
-
 
 }
