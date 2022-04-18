@@ -99,8 +99,6 @@ export class FilmesComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
 }

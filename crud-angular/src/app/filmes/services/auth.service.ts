@@ -8,12 +8,13 @@ export class AuthService {
   public loginResponse: ResponseLogin;
 
   public clear(): void{
-    this.loginResponse.token = "";
-    this.loginResponse.tipo = "";
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('tipo')
   }
 
   public isAuthenticated():boolean{
-    return Boolean(this.loginResponse?.token && this.loginResponse?.tipo);
+    let token = (sessionStorage.getItem('token'),sessionStorage.getItem('tipo'))
+    return !(token === null)
   }
 
 }

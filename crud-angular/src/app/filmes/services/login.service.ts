@@ -19,7 +19,10 @@ export class LoginService {
       this.API,
       requestLogin
       ).pipe(
-        tap((loginResponse) => (this.authService.loginResponse = loginResponse))
+        tap((loginResponse) => (
+          sessionStorage.setItem('token', loginResponse.token),
+          sessionStorage.setItem('tipo', loginResponse.tipo)
+          ))
       );
   }
 }

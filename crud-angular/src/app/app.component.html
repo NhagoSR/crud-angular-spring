@@ -1,4 +1,8 @@
 <mat-toolbar color="primary">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <button class="homeBtn" mat-fab color="accent" routerLink="/home" aria-label="Example icon-button with a heart icon">
     <mat-icon size="10">home</mat-icon>
   </button>
@@ -9,9 +13,15 @@
 
   <span class="spacer"></span>
 
-  <button color="accent" mat-flat-button class="menuButton" routerLink="/logout" *ngIf="authService.isAuthenticated()">Sair</button>
+  <div class="accessibility">
+    <button mat-mini-fab class="btnFont" color="basic" (click)="setFontSize('a-')">A-</button>
+    <button mat-mini-fab class="btnFont" color="basic" (click)="setFontSize('a')"> A </button>
+    <button mat-mini-fab class="btnFont" color="basic" (click)="setFontSize('a+')">A+</button>
+  </div>
 
-  <button color="accent" mat-flat-button routerLink="/login" class="menuButton" *ngIf="!authService.isAuthenticated()">Entrar / Registrar-se</button>
+  <button color="accent" mat-flat-button class="menuBtnLogout" routerLink="/logout" *ngIf="authService.isAuthenticated()">Sair</button>
+
+  <button color="accent" mat-flat-button routerLink="/login" class="menuBtnLogin" *ngIf="!authService.isAuthenticated()">Entrar / Registrar-se</button>
 
 </mat-toolbar>
 <router-outlet></router-outlet>

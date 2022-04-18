@@ -2,21 +2,75 @@
   flex: 1 1 auto;
 }
 
-.menuButton {
-  color: black;
-  font-weight: bold;
+.menuBtnLogout {
+  margin-left: 3px;
+  color: #FFC107;
+  background-color: transparent !important;
+  border: 2px solid #FFC107 !important;
+}
+
+.menuBtnLogout:hover {
+  background-color: white !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+.menuBtnLogin {
+  margin-left: 3px;
+  color: #FFC107;
+  background-color: transparent !important;
+  border: 2px solid #FFC107 !important;
+}
+
+.menuBtnLogin:hover {
+  background-color: white !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
 }
 
 .homeBtn {
-  color: black;
+  color: #673AB7 !important;
   font-weight: bold;
 }
+
+.homeBtn:hover {
+  background-color: white !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
 .crudBtn {
-  color: black;
-  font-weight: bold;
+  margin-left: 3px;
+  color: #FFC107;
+  background-color: transparent !important;
+  border: 2px solid #FFC107 !important;
+}
+
+.crudBtn:hover{
+  background-color: white !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
 }
 
 .sepBar {
   padding-left: 1%;
   padding-right: 1%;
+}
+
+.accessibility{
+  padding-right: 4%;
+  padding-left: 4%;
+}
+
+.btnFont {
+  margin-left: 3px;
+  color: #FFC107;
+  background-color: transparent !important;
+  border: 2px solid #FFC107 !important;
+}
+
+.btnFont:hover{
+  background-color: white !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
 }

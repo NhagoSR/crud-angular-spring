@@ -1,5 +1,77 @@
-<mat-card>
-  <mat-toolbar color="primary">
-      <span>Tela Home aqui</span>
+<div class="container" *ngIf="filme$ | async as filmes; else loading">
+  <mat-toolbar class="toolbar" color="accent">
+
+    <div class="d-flex campo-pesquisa">
+      <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Pesquisar Filmes"
+      [formControl]="campoSearch"
+      aria-label="Search">
+    </div>
+
+    <span class="spacer"></span>
+
+    <div class="d-flex select-filtro">
+      <select
+      style="font-size: 1rem"
+      class="form-select"
+      *ngIf="categoria$ | async as categorias"
+      name="categoria"
+      placeholder="Categoria"
+      [formControl]="campoSelectCategoria">
+
+        <option value="null">Categoria</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id"> {{ categoria.nome }}</option>
+      </select>
+    </div>
+
+    <div class="d-flex select-filtro">
+      <select
+      style="font-size: 1rem"
+      class="form-select"
+      *ngIf="estudio$ | async as estudios"
+      name="estudio"
+      placeholder="Estudio"
+      [formControl]="campoSelectEstudio">
+
+        <option value="null">Estúdio</option>
+        <option *ngFor="let estudio of estudios" [value]="estudio.id"> {{ estudio.nome }}</option>
+      </select>
+    </div>
   </mat-toolbar>
-</mat-card>
+
+  <div class="d-flex flex-wrap justify-content-around" *ngIf="(filme$ | async)?.length != 0; else filmeNaoEncontrado">
+    <div class="mb-4" *ngFor=" let filme of filmes | paginate: { itemsPerPage: 12, currentPage: p }">
+        <div class="card h-100 box">
+            <div class="card-body">
+                <div class="poster">
+                  <img src="https://pbs.twimg.com/media/FQoVWD3XEA8XU4R?format=png&name=360x360">
+                </div>
+                <div class="titulo">
+                  <h3 class="card-title" style="font-size: 1rem">{{ filme.titulo }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="pags">
+    <pagination-controls
+    (pageChange)="p = $event"
+    [previousLabel]="labels.previousLabel"
+    [nextLabel]="labels.nextLabel">
+    </pagination-controls>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
+<ng-template #filmeNaoEncontrado>
+  <div class="filme-Nao-Encontrado">
+    <p class="texto">Filme não encontrado!</p>
+  </div>
+</ng-template>

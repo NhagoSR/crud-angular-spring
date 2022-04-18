@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
-import { MySwalService } from './../services/my-swal.service';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import 'animate.css';
 
 @Component({
   selector: 'app-logout',
@@ -12,26 +12,24 @@ import { Router } from '@angular/router';
 export class LogoutComponent implements OnInit {
 
   constructor(private authService: AuthService,
-              private router: Router,
-              private mySwalService: MySwalService) { }
+              private router: Router) { }
 
 
   ngOnInit() {
-    this.authService.clear();
-    this.router.navigate(['home']);
+    if(this.authService.isAuthenticated()){
+      this.authService.clear();
+      this.router.navigate(['home']);
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Você foi deslogado',
-      showConfirmButton: false,
-      timer: 1500,
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
+      Swal.fire({
+        icon: 'success',
+        title: 'Você foi deslogado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }else{
+      this.router.navigate(['home']);
+    }
+
   }
 
 }

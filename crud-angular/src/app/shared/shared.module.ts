@@ -1,3 +1,4 @@
+import { HomeUserComponent } from './../filmes/home-user/home-user.component';
 import { AdcEstudiosComponent } from 'src/app/shared/components/adc-estudios/adc-estudios.component';
 import { AdcCategoriasComponent } from 'src/app/shared/components/adc-categorias/adc-categorias.component';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,7 @@ import { UpdCategoriasComponent } from './components/upd-categorias/upd-categori
     AdcEstudiosComponent,
     UpdFilmesComponent,
     UpdEstudiosComponent,
-    UpdCategoriasComponent,
+    UpdCategoriasComponent
   ],
   imports: [
     CommonModule,
@@ -27,4 +28,6 @@ import { UpdCategoriasComponent } from './components/upd-categorias/upd-categori
   ],
   exports: [ErrorDialogComponent]
 })
+
+
 export class SharedModule { }

@@ -1,0 +1,87 @@
+.campo-pesquisa{
+  margin-right: 7px;
+  width: 40%;
+}
+
+.card{
+  margin: 10px;
+}
+
+.select-filtro{
+  margin-right: 15px;
+  font-size: 16px;
+  display: flex;
+  position: relative;
+  height: 35px;
+}
+
+.loading-spinner{
+  margin-top: 3%;
+  padding: 5%;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+.list {
+  max-width: 550px;
+  margin: auto;
+}
+
+.pags{
+  text-align: center;
+}
+
+.poster{
+  width: 100%;
+  align-items: center;
+  display: flex;
+  border: 10px;
+}
+
+.toolbar{
+  margin-top: 6.8%;
+  margin-bottom: 20px;
+  top: 0;
+  z-index: 99;
+}
+
+.titulo{
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.box{
+  width: 250px;
+  margin: 0 10px;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, .1);
+  transition: 1s;
+}
+
+.box img{
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.box:hover{
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.filme-Nao-Encontrado{
+  padding: 50px;
+  text-align: center;
+  font-size: 40px;
+}

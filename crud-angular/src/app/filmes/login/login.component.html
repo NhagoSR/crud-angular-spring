@@ -1,26 +1,39 @@
-<mat-toolbar color="primary">
-  <span>Insira os dados do usuario</span>
-</mat-toolbar>
-
-<mat-card>
-  <form #LoginForm="ngForm" (ngSubmit)="onSubmitLoginForm()">
-    <mat-form-field class="form-full-width" appearance="outline">
-      <mat-label>Email</mat-label>
-      <ng-container >
-        <input [(ngModel)]="requestLogin.email" name="email" matInput placeholder="Email aqui">
-      </ng-container>
-    </mat-form-field>
-
-    <mat-form-field class="form-full-width" appearance="outline">
-      <mat-label>Senha</mat-label>
-      <ng-container >
-        <input [(ngModel)]="requestLogin.senha" name="nome" type="password" matInput placeholder="Senha aqui">
-      </ng-container>
-    </mat-form-field>
-
-    <button type="submit" mat-flat-button color="primary" cdkFocusInitial>Entrar</button>
 
 
-  </form>
+<section class="d-flex justify-content-center sectionLogin">
 
-</mat-card>
+  <mat-card class="cardLogin">
+    <mat-toolbar color="primary">
+      <span style="font-size: 1.3rem">Login</span>
+    </mat-toolbar>
+
+
+    <form class="pt-10" #LoginForm="ngForm" (ngSubmit)="onSubmitLoginForm()">
+      <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label style="font-size: 1rem">Email</mat-label>
+        <ng-container  style="font-size: 1rem">
+          <input [(ngModel)]="requestLogin.email" name="email" matInput placeholder="Email aqui" style="font-size: 1rem">
+        </ng-container>
+      </mat-form-field>
+
+      <mat-form-field class="form-full-width" appearance="outline">
+        <mat-label style="font-size: 1rem">Senha</mat-label>
+        <ng-container  style="font-size: 1rem">
+          <input [(ngModel)]="requestLogin.senha" name="senha" type="password" matInput placeholder="Senha aqui" style="font-size: 1rem">
+        </ng-container>
+      </mat-form-field>
+
+        <span class="d-flex justify-content-end" style="font-size: 0.9rem">
+          Novo aqui?
+          <a class="ms-1" routerLink="/register">Registrar-se</a>
+        </span>
+
+      <div class="d-flex justify-content-center" style="font-size: 1rem">
+        <button class="logBtn" type="submit" mat-flat-button color="primary"  style="font-size: 1rem"cdkFocusInitial>Entrar</button>
+      </div>
+
+
+    </form>
+
+  </mat-card>
+</section>
