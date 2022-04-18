@@ -35,10 +35,11 @@ export class RegisterComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.usuariosPost$ = this.filmesService.postUsuario(data)
-        this.router.navigate(['/filmes'])
+
         console.warn(data)
 
         Swal.fire('Salvo!', '', 'success');
+        this.router.navigate(['/filmes'])
 
       } else if (result.isDenied) {
         Swal.fire('O usuario não foi registrado', '', 'info');
